@@ -7,13 +7,17 @@ import config from './src/config';
 import { Provider as ThemeProvider } from './src/context/theme';
 
 const appConfig = config();
-
 const App = () => {
+  const containerStyle = {
+    flex: 1,
+    backgroundColor: appConfig.theme.colors.background,
+  };
+
   return (
     <ThemeProvider value={appConfig.theme}>
       <>
         <StatusBar barStyle="dark-content" />
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={containerStyle}>
           <RootApp />
         </SafeAreaView>
       </>
