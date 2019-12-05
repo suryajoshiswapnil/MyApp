@@ -1,12 +1,15 @@
 import React, { FC } from 'react';
 
-import { Text } from 'src/ui/atom';
+import { Text } from '../../ui/atom';
 import { View, StyleSheet } from 'react-native';
 
 export interface DashboardProps {}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  title: {
+    fontSize: 25,
   },
 });
 
@@ -17,7 +20,7 @@ const styles = StyleSheet.create({
 const Dashboard: FC<DashboardProps> = props => {
   return (
     <View style={styles.container}>
-      <Text>Hey there</Text>
+      <Text style={styles.title}>Hey there</Text>
     </View>
   );
 };

@@ -8,7 +8,7 @@ interface Options {
  * Configure app
  * @param {Options} opts  - Options to be passed.
  */
-const config = (opts: Options) => {
+const config = (opts?: Options) => {
   return {
     name: 'MyApp',
     author: {
