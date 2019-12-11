@@ -2,13 +2,11 @@
  * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
  * @copyright 2019
  */
-import React, { FC, useContext } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { FC } from 'react';
+import { View } from 'react-native';
 
-import { Text, Button } from '../../ui/atom';
-import ThemeContext from '../../context/theme';
-
-import { withStyles } from '../../lib/with';
+import { withStyle } from '../../util';
+import { Text, Button } from '../../ui';
 
 export interface DashboardProps {
   styles: any;
@@ -19,11 +17,9 @@ export interface DashboardProps {
  * @param {DashboardProps} props - props for the dashboard component
  */
 const Dashboard: FC<DashboardProps> = ({ styles }) => {
-  const { colors } = useContext(ThemeContext);
-
   return (
-    <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <Text style={[styles.title, { color: colors.text }]}>
+    <View style={[styles.container]}>
+      <Text style={[styles.title]}>
         Hello, Swapnil{'\n'}
         <Text style={styles.subtitle}>
           We'd like to welcome to our world of react-native. Enjoy hacking.
@@ -38,16 +34,18 @@ const Dashboard: FC<DashboardProps> = ({ styles }) => {
   );
 };
 
-export default withStyles(Dashboard, ({ colors, fonts }) => {
+export default withStyle(Dashboard, ({ colors, fonts }) => {
   return {
     container: {
       flex: 1,
       paddingVertical: 25,
       paddingHorizontal: 20,
+      backgroundColor: colors.background,
     },
     title: {
       fontSize: 30,
       fontWeight: '700',
+      color: colors.text,
     },
     subtitle: {
       fontSize: fonts.size.md,

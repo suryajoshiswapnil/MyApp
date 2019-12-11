@@ -1,7 +1,3 @@
-/**
- * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
- * @copyright 2019
- */
 export const defaultStyles = {
   default: {
     padding: 20,

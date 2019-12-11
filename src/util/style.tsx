@@ -5,13 +5,23 @@
 import React, { ComponentType as CType } from 'react';
 import { StyleSheet } from 'react-native';
 
-import * as constants from '../../constant';
+import * as constants from '../constant';
 
 interface WSProps {
   styles: any;
 }
-
 type RawStylesType = ((c: typeof constants) => object) | object;
+
+/**
+ * Add styles to component, that can be accessed through `styles` props on component,
+ * it also gives facilitates to provide function as a styles which will then returns
+ * a style object.
+ *
+ * @param Component - A react component to enhance
+ * @param rawStyles - A styles object either passed as a object or returned from
+ *                    a function that will be used used to create styles and pass
+ *                    it through props to `Component` provided.
+ */
 const withStyles = <T extends WSProps>(
   Component: CType<T>,
   rawStyles: RawStylesType = {},

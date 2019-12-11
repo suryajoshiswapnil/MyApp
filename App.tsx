@@ -8,23 +8,20 @@ import { StatusBar, SafeAreaView } from 'react-native';
 import RootApp from './src';
 import config from './src/config';
 
-import { Provider as ThemeProvider } from './src/context/theme';
+import { Provider as ThemeProvider } from './src/context';
 
 const appConfig = config();
 const App = () => {
-  const containerStyle = {
-    flex: 1,
-    backgroundColor: appConfig.theme.colors.background,
-  };
+  React.useEffect(() => {
+    StatusBar.setBarStyle('dark-content');
+  }, []);
 
   return (
     <ThemeProvider value={appConfig.theme}>
-      <>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaView style={containerStyle}>
-          <RootApp />
-        </SafeAreaView>
-      </>
+      <SafeAreaView
+        style={{ flex: 1, backgroundColor: appConfig.theme.colors.background }}>
+        <RootApp />
+      </SafeAreaView>
     </ThemeProvider>
   );
 };

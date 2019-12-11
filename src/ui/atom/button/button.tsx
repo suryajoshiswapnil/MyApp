@@ -14,8 +14,8 @@ import { TouchableNativeFeedbackProps } from 'react-native';
 import Text from '../text';
 
 import { device } from '../../../constant';
-import { withStyles } from '../../../lib/with';
-import { defaultProps, defaultStyles } from './defaults';
+import { withStyle } from '../../../util';
+import { defaultProps, defaultStyles } from './default';
 
 type TouchableProps = TouchableOpacityProps | TouchableNativeFeedbackProps;
 type TouchableType = ComponentType<TouchableProps>;
@@ -57,4 +57,4 @@ const Button: FC<BtnProps> = props => {
   );
 };
 
-export default withStyles<BtnProps>(Button, defaultStyles);
+export default withStyle<BtnProps>(Button, defaultStyles);

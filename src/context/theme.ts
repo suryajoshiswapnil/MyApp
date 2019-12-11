@@ -3,7 +3,7 @@
  * @copyright 2019
  */
 import React from 'react';
-import { colors, fonts } from '../../constant';
+import { colors } from '../constant';
 
 const ThemeContext = React.createContext({
   mode: 'light',
