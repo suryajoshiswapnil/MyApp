@@ -1,20 +1,28 @@
-import colors from './colors';
+/**
+ * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
+ * @copyright 2019
+ */
+import { colors, device, fonts } from '../constant';
 
 interface Options {
-  // Something in here
+  allowFontScaling?: boolean;
 }
 
+const defaultOptions: Options = {
+  allowFontScaling: false,
+};
+
 /**
- * Configure app
- * @param {Options} opts  - Options to be passed.
+ * App Config - Values to be used in app.
  */
-const config = (opts?: Options) => {
+const config = (opts = defaultOptions) => {
   return {
     name: 'MyApp',
     author: {
-      name: 'Swapnil',
+      name: 'Swapnil Suryajoshi',
       email: 'swapnil.suryajoshi@gmail.com',
     },
+    os: device.OS,
     api: {
       dev: 'localhost:3001/api/',
       prod: 'localhost:3001/api/',
@@ -26,6 +34,14 @@ const config = (opts?: Options) => {
     theme: {
       mode: 'light',
       colors,
+    },
+    font: {
+      allowScaling: opts.allowFontScaling,
+      family: {
+        android: 'Roboto',
+        ios: 'Avenir Next',
+      },
+      size: [],
     },
   };
 };

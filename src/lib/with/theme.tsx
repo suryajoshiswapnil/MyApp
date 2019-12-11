@@ -1,7 +1,11 @@
+/**
+ * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
+ * @copyright 2019
+ */
 import React, { ElementType } from 'react';
 import { Consumer as ThemeConsumer } from '../../context/theme';
 
-export const withTheme = (Component: ElementType) => {
+const withTheme = (Component: ElementType) => {
   return (
     <ThemeConsumer>
       {({ mode, colors }) => {
@@ -10,3 +14,5 @@ export const withTheme = (Component: ElementType) => {
     </ThemeConsumer>
   );
 };
+
+export default withTheme;

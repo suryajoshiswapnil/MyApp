@@ -1,4 +1,8 @@
-import React, { useContext } from 'react';
+/**
+ * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
+ * @copyright 2019
+ */
+import React from 'react';
 import { StatusBar, SafeAreaView } from 'react-native';
 
 import RootApp from './src';

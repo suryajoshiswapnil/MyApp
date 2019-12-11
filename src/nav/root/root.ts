@@ -1,10 +1,13 @@
+/**
+ * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
+ * @copyright 2019
+ */
 import { createStackNavigator } from 'react-navigation-stack';
-import { Login, Dashboard } from '../../page';
+import { Dashboard } from '../../page';
 
 const RootNav = createStackNavigator(
   {
     dashboard: { screen: Dashboard },
-    login: { screen: Login },
   },
   {
     initialRouteName: 'dashboard',

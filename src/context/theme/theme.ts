@@ -1,17 +1,13 @@
-import React, { ElementType } from 'react';
+/**
+ * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
+ * @copyright 2019
+ */
+import React from 'react';
+import { colors, fonts } from '../../constant';
 
 const ThemeContext = React.createContext({
   mode: 'light',
-  colors: {
-    primary: '#222831',
-    accent: '#00adb5',
-    background: '#1d4d4f',
-    disabled: '#dff6f0',
-    surface: '#357376',
-    placeholder: '#eeeeee',
-    text: '#eeeeee',
-    backdrop: '#393e46',
-  },
+  colors,
 });
 
 export const Provider = ThemeContext.Provider;
