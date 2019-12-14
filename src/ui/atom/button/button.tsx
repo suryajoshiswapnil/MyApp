@@ -2,7 +2,7 @@
  * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
  * @copyright 2019
  */
-import React, { FC, ComponentType } from 'react';
+import React, { FC, ComponentType, ReactNode } from 'react';
 
 import { TextStyle } from 'react-native';
 import { TouchableOpacity as TOpacity } from 'react-native';
@@ -21,10 +21,12 @@ type TouchableProps = TouchableOpacityProps | TouchableNativeFeedbackProps;
 type TouchableType = ComponentType<TouchableProps>;
 
 export type BtnProps = TouchableProps & {
-  styles: any; // TODO: Need more specific type.
+  styles: typeof defaultStyles; // TODO: Need more specific type.
   label?: string;
   outline?: boolean;
   labelStyle?: TextStyle;
+  // Hack, not working if children removed
+  children?: ReactNode;
 };
 
 const Touchable: TouchableType = device.isAndroid ? TNFeedback : TOpacity;
@@ -57,4 +59,4 @@ const Button: FC<BtnProps> = props => {
   );
 };
 
-export default withStyle<BtnProps>(Button, defaultStyles);
+export default withStyle(defaultStyles)(Button);

@@ -1,6 +1,6 @@
 export const defaultStyles = {
   default: {
-    padding: 20,
+    padding: 10,
   },
   outline: {
     borderWidth: 1,
