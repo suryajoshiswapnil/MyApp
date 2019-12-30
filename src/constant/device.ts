@@ -13,7 +13,8 @@ const dimensions = Dimensions.get('window');
  * stuff can be added here,
  */
 const device = {
-  OS: Platform.OS,
+  os: Platform.OS,
+
   isIOS: Platform.OS === 'ios',
   isAndroid: Platform.OS === 'android',
 

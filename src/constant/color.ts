@@ -18,7 +18,7 @@
  */
 const colors = {
   primary: '#222831',
-  accent: '#00adb5', // secondary
+  accent: '#00adb5',
   background: '#1d4d4f',
   disabled: '#dff6f0',
   surface: '#357376',

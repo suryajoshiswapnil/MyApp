@@ -3,7 +3,7 @@
  * @copyright 2019
  */
 import { createStyle } from '../../util';
-import { colors, fonts } from '../../constant';
+import { colors, typography } from '../../constant';
 
 const styles = createStyle({
   container: {
@@ -20,7 +20,7 @@ const styles = createStyle({
   },
   text: {
     color: colors.text,
-    fontSize: fonts.size.md,
+    fontSize: typography.size.md,
   },
   title: {
     fontSize: 30,
@@ -28,10 +28,10 @@ const styles = createStyle({
   },
   subtitle: {
     fontWeight: '500',
-    fontSize: fonts.size.md,
+    fontSize: typography.size.md,
   },
   contentText: {
-    fontSize: fonts.size.xl,
+    fontSize: typography.size.xl,
   },
   buttonContainer: {
     padding: 20,
@@ -39,7 +39,7 @@ const styles = createStyle({
     backgroundColor: colors.surface,
   },
   buttonLabel: {
-    fontSize: fonts.size.xl,
+    fontSize: typography.size.xl,
     fontWeight: '700',
     textTransform: 'uppercase',
   },

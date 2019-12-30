@@ -3,14 +3,16 @@
  * @copyright 2019
  */
 import React from 'react';
-import { colors } from '../constant';
+
+//TODO: Find another way to get type information
+import colors from '../constant/color';
 
 const ThemeContext = React.createContext({
   mode: 'light',
-  colors,
+  colors: colors,
 });
 
-export const Provider = ThemeContext.Provider;
-export const Consumer = ThemeContext.Consumer;
+export const ThemeProvider = ThemeContext.Provider;
+export const ThemeConsumer = ThemeContext.Consumer;
 
 export default ThemeContext;

@@ -7,12 +7,12 @@ import React, { FC } from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import { Text as NativeText, TextProps as NativeTextProps } from 'react-native';
 
-import { fonts } from '../../../constant';
+import { typography } from '../../../constant';
 
 const styles = StyleSheet.create({
   default: {
-    fontFamily: fonts.family,
-    fontSize: fonts.size.md,
+    fontFamily: typography.family,
+    fontSize: typography.size.md,
   },
 });
 

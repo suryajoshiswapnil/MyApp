@@ -1,1 +1,2 @@
-export { default as ThemeContext, Provider, Consumer } from './theme';
+export { ThemeProvider, ThemeConsumer } from './theme';
+export { ConfigProvider, ConfigConsumer } from './config';

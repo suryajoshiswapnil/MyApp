@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, FC } from 'react';
-import { Animated } from 'react-native';
+import { Animated, ViewStyle } from 'react-native';
 
 import { withStyle } from '../../../util';
 import { colors } from '../../../constant';
@@ -14,6 +14,7 @@ interface Props {
   color?: string;
   animating?: boolean;
   styles: any;
+  style?: ViewStyle;
 }
 
 const Dot: FC<Props> = ({ styles, animating = true, ...props }) => {
@@ -58,7 +59,7 @@ const Dot: FC<Props> = ({ styles, animating = true, ...props }) => {
   };
 
   return (
-    <Animated.View>
+    <Animated.View style={props.style}>
       <Animated.View
         style={[
           styles.dot,

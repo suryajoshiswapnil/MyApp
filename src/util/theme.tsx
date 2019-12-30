@@ -3,7 +3,7 @@
  * @copyright 2019
  */
 import React, { ComponentType as CType } from 'react';
-import { Consumer as ThemeConsumer } from '../context/theme';
+import { ThemeConsumer } from '../context/theme';
 
 interface WTProps {
   mode: string;

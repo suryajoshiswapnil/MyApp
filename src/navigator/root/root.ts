@@ -7,7 +7,12 @@ import { Dashboard } from '../../page';
 
 const RootNav = createStackNavigator(
   {
-    dashboard: { screen: Dashboard },
+    dashboard: {
+      screen: Dashboard,
+      navigationOptions: {
+        title: 'Dashboard',
+      },
+    },
   },
   {
     initialRouteName: 'dashboard',

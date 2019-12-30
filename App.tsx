@@ -2,27 +2,31 @@
  * @author Swapnil Suryajoshi <swapnil.suryajoshi@gmail.com>
  * @copyright 2019
  */
-import React from 'react';
-import { StatusBar, SafeAreaView } from 'react-native';
+import React, { FC } from 'react';
 
-import RootApp from './src';
+import NavigatorApp from './src';
 import config from './src/config';
 
-import { Provider as ThemeProvider } from './src/context';
+import { SafeAreaView } from 'react-native';
+import { ThemeProvider, ConfigProvider, ThemeConsumer } from './src/context';
+import { withTheme } from 'src/util';
 
-const appConfig = config();
 const App = () => {
-  React.useEffect(() => {
-    StatusBar.setBarStyle('dark-content');
-  }, []);
-
   return (
-    <ThemeProvider value={appConfig.theme}>
-      <SafeAreaView
-        style={{ flex: 1, backgroundColor: appConfig.theme.colors.background }}>
-        <RootApp />
-      </SafeAreaView>
-    </ThemeProvider>
+    <ConfigProvider value={config}>
+      <ThemeProvider value={config.theme}>
+        <ThemeConsumer>
+          {({ colors }) => {
+            return (
+              <SafeAreaView
+                style={{ flex: 1, backgroundColor: colors.background }}>
+                <NavigatorApp />
+              </SafeAreaView>
+            );
+          }}
+        </ThemeConsumer>
+      </ThemeProvider>
+    </ConfigProvider>
   );
 };
 
