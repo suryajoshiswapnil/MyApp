@@ -6,9 +6,11 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook -p 7007"
   },
   "dependencies": {
+    "frisbee": "^3.1.2",
     "react": "16.9.0",
     "react-native": "0.61.4",
     "react-native-gesture-handler": "^1.5.2",
@@ -21,13 +23,19 @@
     "@babel/core": "^7.6.2",
     "@babel/runtime": "^7.6.2",
     "@react-native-community/eslint-config": "^0.0.5",
-    "@storybook/react-native": "^5.2.6",
+    "@storybook/addon-actions": "^5.2.8",
+    "@storybook/addon-links": "^5.2.8",
+    "@storybook/addons": "^5.2.8",
+    "@storybook/react-native": "^5.2.8",
+    "@storybook/react-native-server": "^5.2.8",
     "@types/jest": "^24.0.18",
     "@types/react-native": "^0.60.22",
     "@types/react-test-renderer": "16.9.0",
     "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "react-dom": "16.9.0",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.6.3"
   },
