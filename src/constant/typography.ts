@@ -84,3 +84,5 @@ const typography = {
 };
 
 export default typography;
+
+export type TypographyType = typeof typography;

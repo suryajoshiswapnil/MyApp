@@ -4,18 +4,14 @@
  */
 
 // TODO:
-// 1. Add support to use function as a rawStyle.
-// 2. Add support to let user pass Stylesheet created styles.
-// 3. Fix Typescript issue.
-// 4. Add in support to let Component know which styles object it has passed.
-
+// 1. Fix Typescript issue.
+// 2. Add in support to let Component know which styles object it has passed.
 import React, { ComponentType as CType } from 'react';
 import { StyleSheet, TextStyle, ViewStyle, ImageStyle } from 'react-native';
 
-interface WSProps {
-  styles: any;
-}
-type Props<T> = Omit<T, keyof WSProps>;
+import { ThemeType } from '../constant';
+import { ThemeConsumer } from '../context';
+
 type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
 
 /**
@@ -27,30 +23,35 @@ type NamedStyles<T> = { [P in keyof T]: ViewStyle | TextStyle | ImageStyle };
  *                    it through props to `Component` provided.
  * @param Component - A react component to enhance
  */
-const withStyle = <T extends NamedStyles<T> | NamedStyles<any>>(
-  rawStyles: T | NamedStyles<T>,
-) => <CT extends WSProps>(Component: CType<CT>) => (props: Props<CT>) => {
-  const styles = StyleSheet.create(rawStyles || {});
-  return <Component {...(props as CT)} styles={styles} />;
+const withStyles = <T extends NamedStyles<T> | NamedStyles<any>>(
+  rawStyles: T | ((theme: ThemeType) => T),
+) => {
+  return <CT extends { styles: T | NamedStyles<T> }>(Component: CType<CT>) => {
+    return (props: Omit<CT, 'styles'>) => {
+      return (
+        <ThemeConsumer>
+          {themeValue => {
+            if (typeof rawStyles === 'function') {
+              rawStyles = rawStyles(themeValue as ThemeType);
+            }
+            // https://github.com/Microsoft/TypeScript/issues/28938#issuecomment-450636046
+            return <Component styles={rawStyles} {...(props as CT)} />;
+          }}
+        </ThemeConsumer>
+      );
+    };
+  };
 };
 
-/** An alias to use native Stylesheet create */
-export const create = StyleSheet.create;
+const withStyle = <T extends NamedStyles<T> | NamedStyles<any>>(
+  rawStyles: T,
+) => <CT extends { styles: T | NamedStyles<T> }>(Component: CType<CT>) => (
+  props: Omit<CT, 'styles'>,
+) => {
+  const styles = StyleSheet.create(rawStyles || {});
+  return <Component styles={styles} {...(props as CT)} />;
+};
 
-export default withStyle;
+export const create = StyleSheet.create; /** An alias to native Stylesheet */
 
-/** Old Implementation */
-// const withStyle = <T extends WSProps>(Component: CType<T>, rawStyles: any) => {
-//   return (props: Props<T>) => {
-//     if (typeof rawStyles === 'function') {
-//       rawStyles = rawStyles(constants, props);
-//     }
-//     /**
-//      * Needed to cast `props` (`...(props as T)`) to overcome the bug mentioned
-//      * in this issue. Please take a glance at it. If it's fixed make changes in
-//      * here accordingly.
-//      * https://github.com/Microsoft/TypeScript/issues/28938#issuecomment-450636046
-//      */
-//     return <Component styles={rawStyles} {...(props as T)} />;
-//   };
-// };
+export default withStyles;
